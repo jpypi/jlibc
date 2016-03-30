@@ -1,6 +1,8 @@
 # Todo
 
-- Add makefile + test cases for hashmap
+- Add makefile for test cases as usage demo for:
+    - hashmap
+    - vector
 
 
 # Potential Features
