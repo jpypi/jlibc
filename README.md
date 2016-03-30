@@ -1,12 +1,9 @@
 # Todo
 
-- Add makefile for test cases as usage demo for:
+- Add makefile and test cases/usage demos for:
     - hashmap
     - vector
-
-
-# Potential Features
-
+    - heap
 - Generalize hashmap to support `void *` keys and require user to  specify
   a comparator function.
 
