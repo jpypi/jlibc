@@ -123,7 +123,7 @@ freeHashMap(HashMap *hm, void(free_val)(void *)) {
 unsigned int
 stringHash(HashMap *hm, char *string) {
     unsigned int value = 0;
-    for(unsigned int i = 0; string[i] != 0; i++)
+    for (unsigned int i = 0; string[i] != 0; i++)
         value += string[i];
 
     return value % hm->size;
@@ -137,7 +137,7 @@ stringHash(HashMap *hm, char *string) {
 unsigned int
 jvmStringHash(HashMap *hm, char *string) {
     unsigned int value = 7;
-    for(unsigned int i = 0; string[i] != 0; i++)
+    for (unsigned int i = 0; string[i] != 0; i++)
         value = value * 31 + string[i];
 
     return value % hm->size;
