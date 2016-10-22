@@ -74,6 +74,16 @@ putElement(HashMap *hm, char *key, void *value) {
             }
         }
     }
+
+    /*
+    Pretty sure this is never used, but GCC complains.
+    (stackoverflow.com/questions/15927583) suggests the following could be used:
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wreturn-type"
+    // Your code here
+    #pragma GCC diagnostic pop
+    */
+    return NULL;
 }
 
 
