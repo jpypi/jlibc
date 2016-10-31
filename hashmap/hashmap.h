@@ -23,6 +23,7 @@ HashMap * initHashMap(int size, HashFunctionType(hash_function));
 
 void * getElement(HashMap *hm, char *key);
 void * putElement(HashMap *hm, char *key, void *value);
+void * delElement(HashMap *hm, char *key);
 
 // Will free all resources used by the hashmap and if `free_val` is not null
 // the `free_val` function will be called for each value in the HashMap. (one

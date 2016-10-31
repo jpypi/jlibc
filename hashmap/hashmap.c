@@ -108,6 +108,60 @@ getElement(HashMap *hm, char *key) {
 }
 
 
+void *
+delElement(HashMap *hm, char *key) {
+    if (key == NULL) return NULL;
+    int hash_pos = hm->hash_function(hm, key);
+
+    if (hm->elements[hash_pos] != NULL) {
+        HashMapNode *last_element = NULL;
+        HashMapNode *current_node = hm->elements[hash_pos];
+
+        // Special case if the first element is the right one
+        if (strcmp(current_node->key, key) == 0) {
+            if (current_node->next == NULL) {
+                hm->elements[hash_pos] = NULL;
+            } else {
+                hm->elements[hash_pos] = current_node->next;
+            }
+
+            void *value = current_node->value;
+            free(current_node->key);
+            free(current_node);
+
+            hm->length--;
+
+            return value;
+        }
+
+        // Search the linked list for the actual node otherwise
+        while (current_node != NULL && strcmp(current_node->key, key)) {
+            last_element = current_node;
+            current_node = current_node->next;
+        }
+
+        // If the actual node was found remove it
+        if (current_node != NULL) {
+            if (current_node->next == NULL) {
+                last_element->next = NULL;
+            } else {
+                last_element->next = current_node->next;
+            }
+
+            void *value = current_node->value;
+            free(current_node->key);
+            free(current_node);
+
+            hm->length--;
+
+            return value;
+        }
+    }
+
+    return NULL;
+}
+
+
 void
 freeHashMap(HashMap *hm, void(free_val)(void *)) {
     // Loop through hash bins
